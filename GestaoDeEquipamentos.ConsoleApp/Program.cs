@@ -57,13 +57,42 @@ while (true)
         Console.WriteLine($"Equipamento {equipamento.nome} foi cadastro com sucesso!");
         Console.ReadLine();
     }
+
     else if (opcaoMenu == "2")
     {
     }
+
     else if (opcaoMenu == "3")
     {
     }
+
     else if (opcaoMenu == "4")
     {
+
+        Console.WriteLine("Visualização de Equipamentos");
+        Console.WriteLine("---------------------------------");
+
+        Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
+            "Id", "Nome", "Preço de Aquisição", "Data de fabricação"
+            );
+
+        for (int i = 0; i < equipamentosSalvos.Length; i++)
+        {
+            Equipamento eq = equipamentosSalvos[i];
+
+            if (eq == null)
+                continue;
+
+            Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
+            eq.id, eq.nome, eq.precoAquisicao, eq.dataFabricacao
+            );
+        }
+
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Pressione ENTER para continuar");
+        Console.ReadLine();
+
     }
 }

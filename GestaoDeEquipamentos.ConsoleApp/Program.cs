@@ -1,7 +1,6 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Dominio;
 
 int contadorIds = 1;
-
 Equipamento[] equipamentosSalvos = new Equipamento[100];
 
 while (true)
@@ -143,7 +142,7 @@ while (true)
         Console.WriteLine("Digite o ID do registro que deseja excluir");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = 0; i < equipamentosSalvos.Length; i++) ;
+        for (int i = 0; i < equipamentosSalvos.Length; i++)
         {
             Equipamento equipamentoSelecionado = equipamentosSalvos[i];
 
@@ -151,7 +150,11 @@ while (true)
                 continue;
 
             if (equipamentoSelecionado.id == idSelecionado)
+            {
                 equipamentosSalvos[i] = null;
+                break;
+            }
+
         }
 
         Console.WriteLine($"Equipamento foi excluído com sucesso!");

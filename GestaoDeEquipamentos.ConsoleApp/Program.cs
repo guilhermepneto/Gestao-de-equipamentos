@@ -22,18 +22,12 @@ chamadoTeste.equipamento = equipamentoTeste;
 
 equipamentosSalvos[0] = equipamentoTeste;
 
+TelaPrincipal telaPrincipal = new TelaPrincipal();
+
 while (true)
 {
-    Console.Clear();
-    Console.WriteLine("---------------------------------");
-    Console.WriteLine("Gestão de Equipamentos");
-    Console.WriteLine("---------------------------------");
-    Console.WriteLine("1 - Controle de equipamento");
-    Console.WriteLine("2 - Controle de chamados");
-    Console.WriteLine("S - Sair");
-    Console.WriteLine("---------------------------------");
-    Console.Write("> ");
-    string? opcaoMenuPrincipal = Console.ReadLine()?.ToUpper();
+
+    string? opcaoMenuPrincipal = telaPrincipal.ObterOpcaoMenuPrincipal();
 
     if (opcaoMenuPrincipal == "S")
     {
@@ -433,8 +427,6 @@ while (true)
                 Console.WriteLine("---------------------------------");
                 Console.WriteLine("Exclusão de Chamado");
                 Console.WriteLine("---------------------------------");
-
-                // Tabela
                 Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}",
                     "Id", "Título", "Descrição", "Data de Abertura", "Equipamento"

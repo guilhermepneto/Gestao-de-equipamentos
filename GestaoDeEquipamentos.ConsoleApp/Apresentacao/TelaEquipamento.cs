@@ -1,9 +1,10 @@
 namespace GestaoDeEquipamentos.ConsoleApp.Apresentacao;
 
+using GestaoDeEquipamentos.ConsoleApp.Dominio;
+
 public class TelaEquipamento
 {
-    public int contadorIdsEquipamentos = 1;
-    public Equipamento[] equipamentosSalvos = new Equipamento[100];
+    public RepositorioEquipamento repositorioEquipamento;
     public string? ObterOpcaoMenu()
     {
         Console.Clear();
@@ -37,19 +38,11 @@ public class TelaEquipamento
         DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
         Equipamento equipamento = new Equipamento();
-        equipamento.id = contadorIdsEquipamentos++;
         equipamento.nome = nome;
         equipamento.precoAquisicao = precoAquisicao;
         equipamento.dataFabricacao = dataFabricacao;
 
-        for (int i = 0; i < equipamentosSalvos.Length; i++)
-        {
-            if (equipamentosSalvos[i] == null)
-            {
-                equipamentosSalvos[i] = equipamento;
-                break;
-            }
-        }
+        RepositorioEquipamento.Cadastrar(equipamento);
 
         Console.WriteLine($"Equipamento {equipamento.nome} foi cadastro com sucesso!");
         Console.ReadLine();
@@ -60,6 +53,8 @@ public class TelaEquipamento
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Edição de Equipamentos");
         Console.WriteLine("---------------------------------");
+
+        Equipamento[] equipamentosSalvos = repositorioEquipamento.SelecionarTodos();
 
         Console.WriteLine(
            "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
@@ -92,21 +87,12 @@ public class TelaEquipamento
         Console.Write("Digite a data de fabricação do equipamento: ");
         DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
-        for (int i = 0; i < equipamentosSalvos.Length; i++)
-        {
-            Equipamento equipamentoSelecionado = equipamentosSalvos[i];
+        Equipamento equipamentoAtualizado = new Equipamento();
+        equipamentoSelecionado.nome = equipamentoAtualizado.nome;
+        equipamentoSelecionado.precoAquisicao = equipamentoAtualizado.precoAquisicao;
+        equipamentoSelecionado.dataFabricacao = equipamentoAtualizado.dataFabricacao;
 
-            if (equipamentoSelecionado == null)
-                continue;
-
-            if (equipamentoSelecionado.id == idSelecionado)
-            {
-                equipamentoSelecionado.nome = nome;
-                equipamentoSelecionado.precoAquisicao = precoAquisicao;
-                equipamentoSelecionado.dataFabricacao = dataFabricacao;
-                break;
-            }
-        }
+        RepositorioEquipamento.Editar(idSelecionado, equipamentoAtualizado);
 
         Console.WriteLine($"Equipamento {nome} foi editado com sucesso!");
         Console.ReadLine();
@@ -117,6 +103,8 @@ public class TelaEquipamento
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Exclusão de Equipamentos");
         Console.WriteLine("---------------------------------");
+
+        Equipamento[] equipamentosSalvos = repositorioEquipamento.SelecionarTodos();
 
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
@@ -140,20 +128,7 @@ public class TelaEquipamento
         Console.WriteLine("Digite o ID do registro que deseja excluir");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = 0; i < equipamentosSalvos.Length; i++)
-        {
-            Equipamento equipamentoSelecionado = equipamentosSalvos[i];
-
-            if (equipamentoSelecionado == null)
-                continue;
-
-            if (equipamentoSelecionado.id == idSelecionado)
-            {
-                equipamentosSalvos[i] = null;
-                break;
-            }
-
-        }
+        repositorioEquipamento.Excluir(idSelecionado);
 
         Console.WriteLine($"Equipamento foi excluído com sucesso!");
         Console.ReadLine();
@@ -164,6 +139,8 @@ public class TelaEquipamento
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Visualização de Equipamentos");
         Console.WriteLine("---------------------------------");
+
+        Equipamento[] equipamentosSalvos = repositorioEquipamento.SelecionarTodos();
 
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",

@@ -8,8 +8,6 @@ public class RepositorioEquipamento
 
     public void Cadastrar(Equipamento novoEquipamento)
     {
-        novoEquipamento.id = contadorIdsEquipamentos++;
-
         for (int i = 0; i < equipamentosSalvos.Length; i++)
         {
             if (equipamentosSalvos[i] == null)
@@ -31,9 +29,7 @@ public class RepositorioEquipamento
 
             if (equipamentoSelecionado.id == idSelecionado)
             {
-                equipamentoSelecionado.nome = equipamentoAtualizado.nome;
-                equipamentoSelecionado.precoAquisicao = equipamentoAtualizado.precoAquisicao;
-                equipamentoSelecionado.dataFabricacao = equipamentoAtualizado.dataFabricacao;
+                equipamentoSelecionado.Atualizar(equipamentoAtualizado);
                 break;
             }
         }

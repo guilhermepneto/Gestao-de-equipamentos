@@ -1,6 +1,7 @@
-namespace GestaoDeEquipamentos.ConsoleApp.Apresentacao;
-
 using GestaoDeEquipamentos.ConsoleApp.Dominio;
+using GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
+
+namespace GestaoDeEquipamentos.ConsoleApp.Apresentacao;
 
 public class TelaEquipamento
 {
@@ -42,7 +43,7 @@ public class TelaEquipamento
         equipamento.precoAquisicao = precoAquisicao;
         equipamento.dataFabricacao = dataFabricacao;
 
-        RepositorioEquipamento.Cadastrar(equipamento);
+        repositorioEquipamento.Cadastrar(equipamento);
 
         Console.WriteLine($"Equipamento {equipamento.nome} foi cadastro com sucesso!");
         Console.ReadLine();
@@ -88,11 +89,11 @@ public class TelaEquipamento
         DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
         Equipamento equipamentoAtualizado = new Equipamento();
-        equipamentoSelecionado.nome = equipamentoAtualizado.nome;
-        equipamentoSelecionado.precoAquisicao = equipamentoAtualizado.precoAquisicao;
-        equipamentoSelecionado.dataFabricacao = equipamentoAtualizado.dataFabricacao;
+        equipamentoAtualizado.nome = nome;
+        equipamentoAtualizado.precoAquisicao = precoAquisicao;
+        equipamentoAtualizado.dataFabricacao = dataFabricacao;
 
-        RepositorioEquipamento.Editar(idSelecionado, equipamentoAtualizado);
+        repositorioEquipamento.Editar(idSelecionado, equipamentoAtualizado);
 
         Console.WriteLine($"Equipamento {nome} foi editado com sucesso!");
         Console.ReadLine();

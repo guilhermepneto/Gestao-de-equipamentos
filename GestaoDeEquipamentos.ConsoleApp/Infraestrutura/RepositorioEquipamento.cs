@@ -1,4 +1,4 @@
-namespace GestaoDeEquipamentos.ConsoleApp.infraestrutura;
+namespace GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 using GestaoDeEquipamentos.ConsoleApp.Dominio;
 public class RepositorioEquipamento
@@ -20,7 +20,7 @@ public class RepositorioEquipamento
         }
     }
 
-    public void Editar(int idSelecionado, GestaoDeEquipamentos equipamentoAtualizado)
+    public void Editar(int idSelecionado, Equipamento equipamentoAtualizado)
     {
         for (int i = 0; i < equipamentosSalvos.Length; i++)
         {

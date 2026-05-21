@@ -69,7 +69,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
-            eq.id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             );
         }
 
@@ -116,7 +116,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
-            eq.id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             );
         }
 
@@ -152,7 +152,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
-            eq.id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             );
         }
 

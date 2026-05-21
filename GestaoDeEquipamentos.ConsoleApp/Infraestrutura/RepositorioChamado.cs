@@ -4,12 +4,11 @@ namespace GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 public class RepositorioChamado
 {
-    private int contadorIdsChamados = 1;
+
     private Chamado[] chamadosSalvos = new Chamado[100];
 
     public void Cadastrar(Chamado novoChamado)
     {
-        novoChamado.id = contadorIdsChamados++;
         for (int i = 0; i < chamadosSalvos.Length; i++)
         {
             if (chamadosSalvos[i] == null)
@@ -28,11 +27,9 @@ public class RepositorioChamado
             if (chamadoSelecionado == null)
                 continue;
 
-            if (chamadoSelecionado.id == idSelecionado)
+            if (chamadoSelecionado.Id == idSelecionado)
             {
-                chamadoSelecionado.titulo = chamadoAtualizado.titulo;
-                chamadoSelecionado.descricao = chamadoAtualizado.descricao;
-                chamadoSelecionado.equipamento = chamadoAtualizado.equipamento;
+                chamadoSelecionado.Atualizar(chamadoAtualizado);
                 break;
             }
         }
@@ -47,7 +44,7 @@ public class RepositorioChamado
             if (chamadoSelecionado == null)
                 continue;
 
-            if (chamadoSelecionado.id == idSelecionado)
+            if (chamadoSelecionado.Id == idSelecionado)
             {
                 chamadosSalvos[i] = null;
                 break;

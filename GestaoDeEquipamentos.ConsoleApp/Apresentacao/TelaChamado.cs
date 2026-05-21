@@ -37,8 +37,6 @@ public class TelaChamado
         Console.Write("Digite a descrição do chamado: ");
         string descricao = Console.ReadLine();
 
-        DateTime dataAbertura = DateTime.Now;
-
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Visualização de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -59,7 +57,7 @@ public class TelaChamado
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
-            eq.id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao
+            eq.Id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao
             );
         }
 
@@ -76,22 +74,18 @@ public class TelaChamado
             if (eq == null)
                 continue;
 
-            if (eq.id == idEquipamentoSelecionado)
+            if (eq.Id == idEquipamentoSelecionado)
             {
                 equipamentoSelecionado = eq;
                 break;
             }
         }
 
-        Chamado novoChamado = new Chamado();
-        novoChamado.titulo = titulo;
-        novoChamado.descricao = descricao;
-        novoChamado.dataAbertura = dataAbertura;
-        novoChamado.equipamento = equipamentoSelecionado;
+        Chamado novoChamado = new Chamado(titulo, descricao, equipamentoSelecionado);
 
         repositorioChamado.Cadastrar(novoChamado);
 
-        Console.WriteLine($"Chamado {novoChamado.titulo} foi cadastro com sucesso!");
+        Console.WriteLine($"Chamado {novoChamado.Titulo} foi cadastro com sucesso!");
         Console.ReadLine();
     }
     public void Editar()
@@ -116,11 +110,11 @@ public class TelaChamado
 
             Console.WriteLine(
                 "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}",
-                ch.id,
-                ch.titulo,
-                ch.descricao,
-                ch.dataAbertura.ToShortDateString(),
-                ch.equipamento.Nome
+                ch.Id,
+                ch.Titulo,
+                ch.Descricao,
+                ch.DataAbertura.ToShortDateString(),
+                ch.Equipamento.Nome
             );
         }
 
@@ -152,7 +146,7 @@ public class TelaChamado
 
             Console.WriteLine(
                 "{0, -7} | {1, -15} | {2, -20} | {3, -15}",
-                eq.id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao
+                eq.Id, eq.Nome, eq.PrecoAquisicao, eq.DataFabricacao
             );
         }
 
@@ -169,17 +163,14 @@ public class TelaChamado
             if (eq == null)
                 continue;
 
-            if (eq.id == idEquipamentoSelecionado)
+            if (eq.Id == idEquipamentoSelecionado)
             {
                 equipamentoSelecionado = eq;
                 break;
             }
         }
 
-        Chamado chamadoAtualizado = new Chamado();
-        chamadoAtualizado.titulo = titulo;
-        chamadoAtualizado.descricao = descricao;
-        chamadoAtualizado.equipamento = equipamentoSelecionado;
+        Chamado chamadoAtualizado = new Chamado(titulo, descricao, equipamentoSelecionado);
 
         repositorioChamado.Editar(idSelecionado, chamadoAtualizado);
 
@@ -208,11 +199,11 @@ public class TelaChamado
 
             Console.WriteLine(
                 "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}",
-                ch.id,
-                ch.titulo,
-                ch.descricao,
-                ch.dataAbertura.ToShortDateString(),
-                ch.equipamento.Nome
+                ch.Id,
+                ch.Titulo,
+                ch.Descricao,
+                ch.DataAbertura.ToShortDateString(),
+                ch.Equipamento.Nome
             );
         }
 
@@ -247,11 +238,11 @@ public class TelaChamado
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}",
-            ch.id,
-            ch.titulo,
-            ch.descricao,
-            ch.dataAbertura.ToShortDateString(),
-            ch.equipamento.Nome
+            ch.Id,
+            ch.Titulo,
+            ch.Descricao,
+            ch.DataAbertura.ToShortDateString(),
+            ch.Equipamento.Nome
         );
 
             Console.WriteLine("---------------------------------");

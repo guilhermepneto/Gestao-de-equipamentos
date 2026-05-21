@@ -3,7 +3,6 @@ namespace GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 using GestaoDeEquipamentos.ConsoleApp.Dominio;
 public class RepositorioEquipamento
 {
-    public int contadorIdsEquipamentos = 1;
     private Equipamento[] equipamentosSalvos = new Equipamento[100];
 
     public void Cadastrar(Equipamento novoEquipamento)
@@ -27,7 +26,7 @@ public class RepositorioEquipamento
             if (equipamentoSelecionado == null)
                 continue;
 
-            if (equipamentoSelecionado.id == idSelecionado)
+            if (equipamentoSelecionado.Id == idSelecionado)
             {
                 equipamentoSelecionado.Atualizar(equipamentoAtualizado);
                 break;
@@ -45,7 +44,7 @@ public class RepositorioEquipamento
             if (equipamentoSelecionado == null)
                 continue;
 
-            if (equipamentoSelecionado.id == idSelecionado)
+            if (equipamentoSelecionado.Id == idSelecionado)
             {
                 equipamentosSalvos[i] = null;
                 break;
